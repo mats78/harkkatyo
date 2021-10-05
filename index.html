@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kankaita ostamaan</title>
+    <script src="cart.js" defer></script>
+    <style>
+        body{
+        margin: 0;
+        padding: 0;
+        background: lightskyblue;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        .ostoskori{
+        width: 60%;
+        height: 90%;
+        background-color: #ffffff;
+        border-radius: 20px;       
+        }
+        .Header{
+        margin: 5px; 
+        width: 80%;
+        height: 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        .Heading{
+        font-size: 32px;        
+        color: black;
+        }
+        .Products{
+        margin: 5px;
+        width: 90%;
+        height: 18%;
+        display: flex;
+        justify-content:space-evenly;
+        align-items: center;
+        }
+        .image-box{
+        width: 20%;
+        text-align:center;
+        margin-top: 10px;
+        }
+        .about{
+        height: 50%;
+        width: 40%;
+         }
+        .title{
+        padding-top: 5px;
+        line-height: 10px;
+        font-size: 24px;
+        color: #000000;
+        }
+        .subtitle{
+        line-height: 10px;
+        font-size: 18px;
+        color: #000000;
+        }
+        .counter{
+        width: 25%;
+        height: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        }
+        .amount-box{
+        border-radius: 5%;
+        display:flex;
+        flex-direction: column;
+        /* justify-content: center;
+        align-items: center; */
+        margin-right: 10px;
+        margin-top: auto;
+        }
+        .amount-box input{
+        max-width: 50px;
+        margin-top: auto;
+        }
+        .btn{
+        /* border-radius: 5%; */
+        display: flex;
+        /* justify-content: center;
+        align-items: center; */
+        margin-top: auto;
+        }
+        hr{
+        width: 75%;
+        float: right;
+        margin-right: 5%;
+        }
+        .checkout{
+        float: right;
+        margin-right: 5%;
+        width: 28%;
+        }
+        .total{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        }
+        .Subtotal{
+        font-size: 22px;
+        color: #202020;
+        }
+        .items{
+        font-size: 16px;
+        color: #909090;
+        line-height: 10px;
+        }
+        .total-amount{
+        font-size: 30px;
+        color: #202020;
+        }
+        .button{
+        margin-top: 5px;
+        width: 80%;
+        height: 40px;
+        border: none;
+        background: lightblue;
+        border-radius: 20px;
+        font-size: 24px;
+        color:black;
+        }
+        .button2{ 
+        margin-top: 5px; 
+        width:15%;
+        height: 40px;
+        border: none;
+        background: red;
+        border-radius: 20px;
+        font-size: 24px;
+        color:black;
+        }
+        .lisaa_button{ 
+        margin-top: 5px; 
+        width:80%;
+        height: 50px;
+        border: none;
+        background: lightgray;
+        border-radius: 20px;
+        font-size: 18px;
+        color:black;
+        }
+        .prices{
+        display:flex; 
+        height: 60%;
+        width: 10%;       
+        }
+        .amount{
+        padding-top: 5px;
+        font-size: 26px;
+        color:black;
+        margin-top:auto;
+        }
+
+        @media only screen and (max-width : 800px){ 
+            body{
+                /* height: 150vh; */
+                align-items:unset;
+                margin-top: 5px;  
+                position: relative;         
+            }
+            .Products{
+                width: 100%;
+                height: 25%;
+                flex-direction: column;
+                flex-wrap: wrap;
+            }
+            .ostoskori{       
+                flex-direction: column;
+                width: 95%;                
+                /* height: 100%;  */
+                border-radius: 0px;  
+                justify-content: left;
+                /* align-items: center;      */
+                flex-wrap: wrap; 
+                padding-bottom: 25%;     
+            }
+            .amount-box {
+                flex-direction: column;
+                border-radius: 0%;
+            }
+            .Header{
+                width: 90%;
+                height: 10%;
+            }
+            .about{
+                margin-left: 10px;
+            }
+            .counter{
+                flex-direction: row; 
+                width:55%;   
+                align-items:flex-end;
+                margin-left: 20px;
+            }
+            .title{
+                font-size: 18px;
+                line-height: 15px;
+            }
+            .button2{
+                width:30%;
+                font-size: 18px;
+            }
+            .lisaa_button{
+                font-size: 14px;
+            }
+            .Subtotal{
+                align-items: center;     
+            }
+            .checkout{
+                float: center;
+                margin-right: 5%;
+                width: 50%;
+            }
+            .total-amount{
+                font-size: 20px;
+            }
+            .amount{
+                font-size: 20px;
+                margin-right: 10px;
+            }     
+        }
+    </style>
+</head>
+<body>
+    <div class="ostoskori">
+        <div class="Header">
+            <h2 class="Heading">Tuotteet</h2>
+            <button class="button2" id="button_tyhjää">Tyhjennä</button>                     
+        </div>
+        <div class="Products">
+            <div class="image-box">
+                <img src="images/marimekko1.jpg" style="height:120px" alt="Marimekko-kangas1"/>
+            </div>
+            <div class="about">
+                <h2 class="title">Marimekko Kasvu</h2>
+                <label class="subtitle" id="kangas1_hinta">20 €/m</label>
+            </div>
+            <div class="counter">
+                <div class="amount-box">
+                    <label>määrä (m)</label>
+                    <input type="number" id="kangasmäärä1_input" value="1">
+                </div>               
+                <div class="btn">
+                    <button class="lisaa_button" id="button1">Lisää ostoskoriin</button>                    
+                </div>                
+            </div> 
+            <div class="prices">
+                <div class="amount" id="kangas1_summa">0€</div>
+            </div> 
+        </div>
+        <div class="Products">
+            <div class="image-box">
+                <img src="images/marimekko2.jpg" style="height:120px" alt="Marimekko-kangas2"/>
+            </div>
+            <div class="about">
+                <h2 class="title">Marimekko Siirtolapuutarha</h2>
+                <label class="subtitle" id="kangas2_hinta">25 €/m</label>
+            </div>
+            <div class="counter">
+                <div class="amount-box">
+                    <label>määrä (m)</label>
+                    <input type="number" id="kangasmäärä2_input" value="1">
+                </div>               
+                <div class="btn">
+                    <button class="lisaa_button" id="button2">Lisää ostoskoriin</button>
+                </div>
+            </div> 
+            <div class="prices">
+                <div class="amount" id="kangas2_summa">0€</div>
+            </div>   
+        </div>
+
+        <div class="Products">
+            <div class="image-box">
+                <img src="images/marimekko3.jpg" style="height:120px" alt="Marimekko-kangas3"/>
+            </div>
+            <div class="about">
+                <h2 class="title">Marimekko Pieni Unikko</h2>
+                <label class="subtitle" id="kangas3_hinta">35 €/m</label>
+            </div>
+            <div class="counter">
+                <div class="amount-box">
+                    <label>määrä (m)</label>
+                    <input type="number" id="kangasmäärä3_input" value="1">
+                </div>               
+                <div class="btn">
+                    <button class="lisaa_button" id="button3">Lisää ostoskoriin</button>
+                </div>
+            </div>
+            <div class="prices">
+                <div class="amount" id="kangas3_summa">0€</div>
+            </div>
+        </div>
+
+        <div class="Products">
+            <div class="image-box">
+                <img src="images/marimekko4.jpg" style="height:120px" alt="Marimekko-kangas4"/>
+            </div>
+            <div class="about">
+                <h2 class="title">Marimekko Unikko</h2>
+                <label class="subtitle" id="kangas4_hinta">40 €/m</label>
+             </div>
+            <div class="counter">
+                <div class="amount-box">
+                    <label>määrä (m)</label>
+                    <input type="number" id="kangasmäärä4_input" value="1">
+                </div>               
+                <div class="btn">
+                    <button class="lisaa_button" id="button4">Lisää ostoskoriin</button>
+                </div>
+            </div>
+            <div class="prices">
+                <div class="amount" id="kangas4_summa">0€</div>
+            </div>
+        </div>
+    
+        <hr> 
+        <div class="checkout">
+            <div class="total">
+                <div>
+                    <div class="Subtotal">Yhteensä</div>                    
+                </div>
+                <div class="total-amount" id="ostokset">0€</div>
+            </div>
+            <button class="button">Osta</button>
+        
+        </div>
+    
+    
+    
+    </div>
+
+    
+</body>
+</html>
+
+<!-- https://uxplanet.org/how-to-create-a-shopping-cart-ui-using-html-css-e5db3cd55aa0
+https://speckyboy.com/free-shopping-cart-css-javascript/
+https://github.com/Ahmad528/shoppingCart/blob/main/samplesite/site.html -->
